@@ -9,6 +9,7 @@ This sciprt is mainly a wrapper of https://wiki.archlinux.org/title/Lenovo_IdeaP
 ## Installation
 
 copy utility -> /usr/local/sbin/
+
 copy bash-completion/utility -> /usr/local/share/bash-completion/completions
 
 ## Prerequest
