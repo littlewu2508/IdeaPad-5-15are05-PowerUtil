@@ -15,13 +15,12 @@ NoModule() {
 	exit 127
 }
 
-[ -f /proc/acpi/call ] || modprobe acpi_call || NoModule
-
 if [ $1 = "cleanfan" ]; then
 	echo 1 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/fan_mode
 	sleep 5
 	echo 0 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/fan_mode
 elif [ $1 = "set" ]; then
+	[ -f /proc/acpi/call ] || modprobe acpi_call || NoModule
 	case $2 in
 		"performance")
 			case $3 in
