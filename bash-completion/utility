@@ -8,12 +8,14 @@ _utility_completions()
 	if [ $COMP_CWORD -eq 1 ]; then
 		COMPREPLY=( $(compgen -W "get set" -- $cur) )
 	elif [ $COMP_CWORD -eq 2 ]; then
-		case "$prev" in
-			"get")
-				COMPREPLY=( $(compgen -W "battery performance" -- $cur) )
+		COMPREPLY=( $(compgen -W "battery performance" -- $cur) )
+	elif [ $COMP_CWORD -eq 3 ]; then
+		case $prev in
+			"battery")
+				COMPREPLY=( $(compgen -W "conservation normal rapidcharge" -- $cur) )
 				;;
-			"set")
-				COMPREPLY=( $(compgen -W "battery performance" -- $cur) )
+			"performance")
+				COMPREPLY=( $(compgen -W "balance conservation extreme" -- $cur) )
 				;;
 			*)
 				;;
