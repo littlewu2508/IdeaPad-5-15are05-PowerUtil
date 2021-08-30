@@ -1,0 +1,26 @@
+#!/bin/bash
+
+_utility_completions()
+{
+	COMPREPLY=()
+	cur=${COMP_WORDS[COMP_CWORD]}
+	prev=${COMP_WORDS[COMP_CWORD-1]}
+	if [ $COMP_CWORD -eq 1 ]; then
+		COMPREPLY=( $(compgen -W "get set" -- $cur) )
+	elif [ $COMP_CWORD -eq 2 ]; then
+		case "$prev" in
+			"get")
+				COMPREPLY=( $(compgen -W "battery performance" -- $cur) )
+				;;
+			"set")
+				COMPREPLY=( $(compgen -W "battery performance" -- $cur) )
+				;;
+			*)
+				;;
+		esac
+	fi
+
+	return 0
+}
+
+complete -F _utility_completions utility
