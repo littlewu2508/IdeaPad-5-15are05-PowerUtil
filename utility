@@ -69,13 +69,13 @@ elif [ $1 = "get" ]; then
 			FCMO=$(echo '\_SB.PCI0.LPC0.EC0.FCMO' > /proc/acpi/call; cat /proc/acpi/call | tr -d '\0')
 
 			case ${FCMO} in
-				"0x0called")
+				"0x0")
 					echo "Intelligent Cooling"
 					;;
-				"0x1called")
+				"0x1")
 					echo "Extreme Performance"
 					;;
-				"0x2called")
+				"0x2")
 					echo "Battery Saving"
 					;;
 				*)
@@ -88,20 +88,20 @@ elif [ $1 = "get" ]; then
 			QCHO=$(echo '\_SB.PCI0.LPC0.EC0.QCHO' > /proc/acpi/call; cat /proc/acpi/call | tr -d '\0')
 			BTSM=$(echo '\_SB.PCI0.LPC0.EC0.BTSM' > /proc/acpi/call; cat /proc/acpi/call | tr -d '\0')
 			case ${QCHO} in
-				"0x0called")
+				"0x0")
 					echo "Rapid Charge Off"
 					;;
-				"0x1called")
+				"0x1")
 					echo "Rapid Charge On"
 					;;
 				*)
 					UnknownStatus "Rapid Charge QCHO=${QCHO}"
 			esac
 			case ${BTSM} in
-				"0x0called")
+				"0x0")
 					echo "Battery Conservation Off"
 					;;
-				"0x1called")
+				"0x1")
 					echo "Battery Conservation On"
 					;;
 				*)
